@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @SpringBootApplication
@@ -23,12 +24,10 @@ public class HospitalApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
         // Ajouter des patients
-        patientRepository.save(new Patient(1, "labrini ouiam", sdf.parse("2002-03-23"), false, 23));
-        patientRepository.save(new Patient(2, "toto rajae", sdf.parse("2004-03-13"), false, 73));
-        patientRepository.save(new Patient(3, "john doe", sdf.parse("1990-12-01"), true, 45));
+        patientRepository.save(new Patient(1, "labrini ouiam", new Date(2002,03,03) , false, 23));
+        patientRepository.save(new Patient(2, "toto rajae", new Date(2004,03,03), false, 73));
+        patientRepository.save(new Patient(3, "john doe", new Date(1998,03,03), true, 45));
 
         // Consulter tous les patients
         List<Patient> patients = patientRepository.findAll();
